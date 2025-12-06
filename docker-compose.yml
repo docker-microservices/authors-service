@@ -1,0 +1,7 @@
+services:
+    authors-service: 
+        image: khawlarouiss/authors-service:latest
+        container_name: authors-service
+        ports:
+            - "8082:8082"
+        restart: always   
