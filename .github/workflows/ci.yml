@@ -49,6 +49,6 @@ jobs:
 
       - name: Build & Push Docker image
         run: |
-          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/authors
-          docker build -t $IMAGE_NAME:latest .
-          docker push $IMAGE_NAME:latest
+          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/docker-microservices:authors
+          docker build -t $IMAGE_NAME .
+          docker push $IMAGE_NAME
