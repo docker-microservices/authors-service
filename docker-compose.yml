@@ -1,6 +1,6 @@
 services:
     authors-service: 
-        image: "${DOCKER_USERNAME}/docker-microservices:authors"
+        image: "${DOCKER_USERNAME}/authors:latest"
         container_name: authors-service
         ports:
             - "8082:8082"
