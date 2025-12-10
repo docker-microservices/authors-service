@@ -78,6 +78,6 @@ jobs:
           port: ${{ secrets.PROD_SERVER_PORT }}
           script: | 
             cd ~/docker-microservices/authors
-            docker pull ${DOCKER_USERNAME}/authors:latest
+            docker-compose pull
             docker-compose down
             docker-compose up -d
