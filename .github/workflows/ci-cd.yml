@@ -29,7 +29,7 @@ jobs:
       - name: Build & Push Docker image
         run: |
           JAR_FILE=$(ls target/*.jar | head -n 1)
-          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/authors:latest
+          IMAGE_NAME=${{ secrets.DOCKER_USERNAME }}/authors:${GITHUB_SHA}
           docker build --build-arg JAR_FILE=$JAR_FILE -t $IMAGE_NAME .
           docker push $IMAGE_NAME
 
@@ -67,8 +67,10 @@ jobs:
           username: ${{ secrets.PROD_USER }}
           key: ${{ secrets.PROD_SSH_KEY }}
           port: ${{ secrets.PROD_PORT }}
+          envs: GITHUB_SHA
           script: | 
             cd ~/docker-microservices/authors
+            sed -i "s|\${GITHUB_SHA}|${GITHUB_SHA}|g" docker-compose.yml
             sed -i "s|\${DOCKER_USERNAME}|${{ secrets.DOCKER_USERNAME }}|g" docker-compose.yml
-            docker pull ${{ secrets.DOCKER_USERNAME }}/authors:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/authors:${GITHUB_SHA}
             docker stack deploy --with-registry-auth -c docker-compose.yml authors

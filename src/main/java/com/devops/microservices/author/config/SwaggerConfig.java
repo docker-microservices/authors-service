@@ -1,4 +1,4 @@
-package com.devops.microservices.authors.config;
+package com.devops.microservices.author.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

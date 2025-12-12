@@ -1,6 +1,6 @@
 services:
     authors-service: 
-        image: "${DOCKER_USERNAME}/authors:latest"
+        image: "${DOCKER_USERNAME}/authors:${GITHUB_SHA}"
         ports:
             - "8082:8082"
         networks:
