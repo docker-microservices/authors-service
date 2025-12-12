@@ -1,7 +1,17 @@
 services:
     authors-service: 
         image: "${DOCKER_USERNAME}/authors:latest"
-        container_name: authors-service
         ports:
             - "8082:8082"
-        restart: always   
+        networks:
+          docker-ms:
+            aliases:
+              - authors
+        deploy:
+          replicas: 1
+          restart_policy:
+            condition: on-failure
+            
+networks:
+  docker-ms:
+    external: true
