@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
-@RequestMapping("/authors")
+@RequestMapping("/api/authors")
 @Tag(name = "Authors", description = "Endpoints for Authors API")
 @StandardResponses
 public class AuthorController {
